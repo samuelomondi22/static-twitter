@@ -1,0 +1,62 @@
+import './index.css';
+importing css file into javascript. When Webpack builds your app it sees this css import and learns that index.js depends on index.css. Webpack includes it in bundled javascript sent to the browser
+className =  value becomes class attribute on the DOM node., also helps in css
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> in .html file in <head> to provide link to javascript
+
+props
+are arguments to React functions. 
+This bit is passing a prop called name with a string value of Dave ie
+<Person name='Dave'/>
+
+className prop value of person
+<div className='person'/>
+
+in JSX if component has no children(content) the convention it can be self closing
+instead of <div></div> it can be <div/>
+
+the JS inside the braces must be expression and not statement
+ie
+*Math, concatenation ({7 + 5}, { firstName + lastName})
+*function calls({ this.getFullName(person)})
+*ternary operator({ name === 'Dave' ? 'me': 'not me'})
+*Boolean expressions({ isEnabled && 'enabled'})
+
+DONTS
+*define new variables with var 
+*use if,for,while,etc
+*Define functions with functions
+
+RECEIVING PROPS
+passed as first argument to a component function
+const Property = (props) => {} 
+function Property(props){}
+
+destructuring - makes props easier to work with. ie
+const Hello = ({name}) => {
+  <span>Hello, {name}</span>
+}
+you can read { name } as extract of the 'name' key from the object passed as first argument
+extracting multiple keys ie
+const Hello = ({firstName, lastName }) => {
+  <span>Hello, {firstName} {lastName} </span>
+}
+works outside function argument as well
+const Hello = (props) => {
+  const { name } = props;
+  <span>Hello, {name} </span>
+}
+
+MODIFYING PROPS
+props are read only , component that receive prop must not change them
+data flow is one way and can be passed down to children
+
+COMMUNICATING WITH PARENT COMPONENTS
+function HandleAction(event){
+  console.log('the child did' + event)
+}
+function Parent(){
+  return (
+    <child onAction={HandleAction}/>
+  )
+}
+child component receives a prop named onAction, which it calls whenever it needs to send up data or notify parent of event 
